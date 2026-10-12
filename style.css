@@ -2974,9 +2974,16 @@ ul, ol {
   .hero-main-title {
     font-size: clamp(42px, 5vw, 62px);
   }
-  .martech-cockpit-frame {
-    max-width: 520px;
+  .growth-hub-stage {
+    max-width: 500px;
+    height: 500px;
   }
+  .ring-outer { width: 440px; height: 440px; }
+  .ring-mid   { width: 330px; height: 330px; }
+  .ring-inner { width: 220px; height: 220px; }
+  .central-growth-hub { width: 175px; height: 195px; }
+  .hub-title { font-size: 21px; }
+  .hub-node-card { min-width: 140px; padding: 9px 12px; }
   
   .project-cards-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3022,6 +3029,10 @@ ul, ol {
   .strengths-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .gsc-reports-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
   .contact-split-layout {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -3053,23 +3064,43 @@ ul, ol {
     letter-spacing: -1.5px;
   }
   .hero-visual-col {
-    min-height: auto;
+    min-height: 440px;
     width: 100%;
+    margin-top: 10px;
+    overflow: hidden;
   }
-  .martech-cockpit-frame {
-    max-width: 100%;
-    padding: 16px 14px;
+  .growth-hub-stage {
+    max-width: 360px;
+    height: 400px;
+    transform: scale(0.85);
   }
-  .cockpit-stations-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .ring-outer { width: 330px; height: 330px; }
+  .ring-mid   { width: 250px; height: 250px; }
+  .ring-inner { width: 170px; height: 170px; }
+  .central-growth-hub { width: 140px; height: 160px; border-radius: 20px; padding: 12px 8px; }
+  .hub-title { font-size: 17px; }
+  .hub-core-icon { width: 32px; height: 32px; margin-bottom: 6px; }
+
+  .hub-node-card {
+    min-width: 110px;
+    padding: 6px 10px;
+    gap: 8px;
   }
-  .cockpit-floating-telemetry {
+  .node-icon { width: 26px; height: 26px; font-size: 13px; }
+  .node-name { font-size: 10.5px; }
+  .node-category { font-size: 7px; }
+
+  .node-seo         { top: 0%; left: 32%; }
+  .node-google-ads  { top: 10%; right: -2%; }
+  .node-meta-ads    { top: 44%; right: -8%; }
+  .node-analytics   { bottom: 10%; right: -2%; }
+  .node-conversion  { bottom: -4%; left: 32%; }
+  .node-content     { bottom: 10%; left: -2%; }
+  .node-smm         { top: 44%; left: -8%; }
+  .node-strategy    { top: 10%; left: -2%; }
+
+  .hud-chip {
     display: none;
-  }
-  .hero-proof-strip {
-    flex-wrap: wrap;
-    gap: 12px;
   }
 
   .project-cards-grid {
@@ -3089,6 +3120,28 @@ ul, ol {
   }
   .highlight-opt {
     grid-column: span 1;
+  }
+  .gsc-reports-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .gsc-report-card {
+    padding: 20px 16px;
+  }
+  .gsc-metrics-banner {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 10px 6px;
+  }
+  .gsc-metric-chip {
+    padding: 2px;
+  }
+  .gsc-metric-chip small {
+    font-size: 7.5px;
+    letter-spacing: 0.3px;
+  }
+  .gsc-metric-chip strong {
+    font-size: 14.5px;
   }
   .case-study-grid {
     grid-template-columns: 1fr;
@@ -3134,6 +3187,10 @@ ul, ol {
   }
   .modal-card {
     padding: 24px 18px;
+  }
+  .gsc-metrics-banner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 }
 
