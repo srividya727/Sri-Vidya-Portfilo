@@ -3123,25 +3123,54 @@ ul, ol {
   }
   .gsc-reports-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 22px;
   }
   .gsc-report-card {
-    padding: 20px 16px;
+    padding: 22px 18px;
+  }
+  .gsc-header-row {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
   }
   .gsc-metrics-banner {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    padding: 10px 6px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 14px 12px;
   }
   .gsc-metric-chip {
-    padding: 2px;
+    padding: 4px;
+    text-align: left;
   }
   .gsc-metric-chip small {
-    font-size: 7.5px;
-    letter-spacing: 0.3px;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
   }
   .gsc-metric-chip strong {
-    font-size: 14.5px;
+    font-size: 16px;
+  }
+  .portfolio-toolbar-container {
+    padding: 16px 14px;
+    margin-bottom: 24px;
+  }
+  .search-input-wrap {
+    min-width: 100%;
+  }
+  .location-filters-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+  }
+  .loc-buttons {
+    width: 100%;
+  }
+  .loc-btn {
+    flex: 1;
+    text-align: center;
+    padding: 7px 8px;
+    font-size: 11px;
   }
   .case-study-grid {
     grid-template-columns: 1fr;
@@ -3187,10 +3216,6 @@ ul, ol {
   }
   .modal-card {
     padding: 24px 18px;
-  }
-  .gsc-metrics-banner {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
   }
 }
 
