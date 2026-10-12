@@ -17,6 +17,3404 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
+  <style>
+/* ==========================================================================
+   SRI VIDYA | DIGITAL MARKETING MANAGER PORTFOLIO
+   High-End Marketing Tech Aesthetic · Agency Quality · Futuristic Growth Hub
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-deep: #050811;
+  --bg-base: #070c18;
+  --bg-surface: #0c1424;
+  --bg-surface-elevated: #111c32;
+  --bg-glass: rgba(12, 20, 36, 0.75);
+  
+  --line-subtle: rgba(148, 163, 184, 0.12);
+  --line-hover: rgba(17, 211, 176, 0.35);
+  --line-active: #11d3b0;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #11d3b0;
+
+  /* Gradient Tokens */
+  --teal: #11d3b0;
+  --cyan: #22c8e6;
+  --blue: #3b82f6;
+  --indigo: #6366f1;
+  --purple: #8b5cf6;
+  --pink: #ec4899;
+  --amber: #f59e0b;
+  --gold: #eab308;
+  --green: #10b981;
+
+  --grad-teal-cyan: linear-gradient(135deg, #11d3b0 0%, #22c8e6 100%);
+  --grad-accent-text: linear-gradient(110deg, #18e7c1 0%, #22c8e6 50%, #9084ff 100%);
+  --grad-card-surface: linear-gradient(150deg, rgba(17, 28, 48, 0.9) 0%, rgba(9, 15, 27, 0.94) 100%);
+  
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base Rules */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.65;
+  background-color: var(--bg-deep);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+.container {
+  width: min(1280px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* -------------------------------------------------------------
+   AMBIENT BACKGROUNDS & LIGHTING MESH
+   ------------------------------------------------------------- */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+  overflow: hidden;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.14;
+  animation: orbDrift 24s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, #11d3b0, transparent 70%);
+  top: -150px;
+  left: -200px;
+}
+
+.orb-2 {
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  top: 30%;
+  right: -250px;
+  animation-duration: 30s;
+  animation-delay: -8s;
+}
+
+.orb-3 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, #8b5cf6, transparent 70%);
+  bottom: 10%;
+  left: 20%;
+  animation-duration: 26s;
+  animation-delay: -14s;
+}
+
+.canvas-grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  z-index: -2;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 90%);
+}
+
+/* Custom Cursor Glow (Desktop Pointer) */
+.cursor-glow {
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(17, 211, 176, 0.07) 0%, rgba(34, 200, 230, 0.02) 40%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+/* -------------------------------------------------------------
+   TOP FLOATING GLASSMORPHIC NAVIGATION
+   ------------------------------------------------------------- */
+.header-nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(6, 10, 18, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line-subtle);
+  transition: background var(--transition-fast), padding var(--transition-fast);
+}
+
+.header-nav-wrap.scrolled {
+  background: rgba(6, 10, 18, 0.94);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.nav-container {
+  width: min(1320px, calc(100% - 48px));
+  height: 80px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: height var(--transition-fast);
+}
+
+.header-nav-wrap.scrolled .nav-container {
+  height: 70px;
+}
+
+/* Brand Mark */
+.brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.sv-logo-mark {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: var(--grad-teal-cyan);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 24px rgba(17, 211, 176, 0.35);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.sv-logo-mark.small {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+.sv-letters {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  color: #041018;
+  letter-spacing: -0.5px;
+}
+
+.sv-pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 16px;
+  border: 1px solid var(--teal);
+  opacity: 0;
+  animation: svPulse 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.brand-identity:hover .sv-logo-mark {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 32px rgba(17, 211, 176, 0.55);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
+.brand-role {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  color: var(--teal);
+  margin-top: 1px;
+}
+
+/* Nav Status Badge */
+.nav-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(17, 211, 176, 0.06);
+  border: 1px solid rgba(17, 211, 176, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  color: #b3dfd6;
+  white-space: nowrap;
+}
+
+.status-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 4px rgba(17, 211, 176, 0.2);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+/* Desktop Links */
+.desktop-menu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-link {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  position: relative;
+  padding: 6px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--teal);
+  border-radius: 2px;
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.nav-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: var(--grad-teal-cyan);
+  color: #041018;
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 18px rgba(17, 211, 176, 0.25);
+}
+
+.nav-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(17, 211, 176, 0.45);
+}
+
+/* Mobile Toggle */
+.mobile-toggle-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobile-toggle-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.mobile-drawer {
+  display: none;
+  background: rgba(7, 12, 24, 0.98);
+  border-bottom: 1px solid var(--line-subtle);
+  padding: 24px;
+  backdrop-filter: blur(24px);
+}
+
+.mobile-drawer.open {
+  display: block;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.drawer-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(17, 211, 176, 0.08);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--teal);
+  margin-bottom: 18px;
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.drawer-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.drawer-link:hover {
+  color: var(--teal);
+}
+
+.drawer-cta {
+  background: var(--grad-teal-cyan);
+  color: #041018 !important;
+  font-weight: 700;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-top: 8px;
+  border: none;
+}
+
+/* -------------------------------------------------------------
+   HERO SECTION: FUTURISTIC MARKETING-TECH GROWTH HUB
+   ------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding: 70px 0 100px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-tech-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(17, 211, 176, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 211, 176, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at 70% 45%, black 40%, transparent 80%);
+  animation: gridDrift 40s linear infinite;
+  z-index: -2;
+}
+
+.hero-particles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 48px;
+}
+
+/* Hero Content Column */
+.hero-content-col {
+  position: relative;
+  z-index: 2;
+}
+
+/* Entrance Sequence Animation Elements */
+.hero-anim-item {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(8px);
+  animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--stagger, 1) * 0.1s);
+}
+
+/* Status Pill */
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(17, 211, 176, 0.06);
+  border: 1px solid rgba(17, 211, 176, 0.28);
+  box-shadow: 0 0 20px rgba(17, 211, 176, 0.12);
+  margin-bottom: 24px;
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 4px rgba(17, 211, 176, 0.2);
+  animation: pulseDot 2s infinite;
+}
+
+.pill-text {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--teal);
+  text-transform: uppercase;
+}
+
+/* Identity / Greeting */
+.hero-greeting {
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+
+/* Main Heading with Sophisticated Blur-to-Focus Reveal */
+.hero-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5.8vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -2.5px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 22px 0;
+}
+
+.hero-main-title .title-word {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.gradient-text {
+  background: linear-gradient(110deg, #18e7c1 0%, #22c8e6 50%, #9084ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 35px rgba(17, 211, 176, 0.35));
+}
+
+/* Supporting Headline */
+.hero-supporting-headline {
+  margin-bottom: 20px;
+}
+
+.headline-prefix {
+  display: block;
+  font-size: 13.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-weight: 700;
+  color: #7dd3fc;
+  margin-bottom: 10px;
+}
+
+.headline-tags-seq {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line-subtle);
+  color: #e2e8f0;
+  transition: all var(--transition-fast);
+}
+
+.chip-tag:hover {
+  border-color: var(--teal);
+  background: rgba(17, 211, 176, 0.08);
+  transform: translateY(-2px);
+}
+
+.chip-sep {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* Bio Paragraph */
+.hero-bio-paragraph {
+  font-size: 16.5px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin-bottom: 32px;
+}
+
+.hero-bio-paragraph strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Action CTA Group */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.btn-primary-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 26px;
+  background: linear-gradient(135deg, #11d3b0 0%, #22c8e6 100%);
+  color: #04121a;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(17, 211, 176, 0.35);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
+}
+
+.btn-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+}
+
+.btn-primary-glow:hover .btn-shine {
+  left: 150%;
+}
+
+.btn-primary-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(17, 211, 176, 0.55);
+}
+
+.btn-arrow {
+  font-size: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.btn-primary-glow:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 22px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary-ghost:hover {
+  border-color: var(--line-hover);
+  background: rgba(17, 211, 176, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-tertiary-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  padding: 8px 12px;
+  transition: color var(--transition-fast);
+}
+
+.btn-tertiary-link:hover {
+  color: var(--cyan);
+}
+
+/* Geographic Footprint */
+.hero-footprint-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.meta-line-indicator {
+  width: 32px;
+  height: 2px;
+  background: var(--teal);
+  border-radius: 2px;
+}
+
+.meta-items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.meta-location {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.meta-country {
+  color: #e2e8f0;
+}
+
+.meta-sep {
+  opacity: 0.4;
+}
+
+/* -------------------------------------------------------------
+   RIGHT COLUMN: DIGITAL MARKETING GROWTH HUB STAGE
+   ------------------------------------------------------------- */
+.hero-visual-col {
+  position: relative;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.growth-hub-stage {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ambient Radial Glow */
+.hub-ambient-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(17, 211, 176, 0.24) 0%, rgba(34, 200, 230, 0.08) 50%, transparent 70%);
+  filter: blur(60px);
+  animation: hubBreathe 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* Sweeping Holographic Radar Beam */
+.hub-radar-sweep-beam {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(17, 211, 176, 0.18) 40deg, transparent 55deg);
+  pointer-events: none;
+  animation: radarBeamRotate 11s linear infinite;
+  z-index: 1;
+  mask-image: radial-gradient(circle, black 32%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle, black 32%, transparent 70%);
+}
+
+@keyframes radarBeamRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Concentric Radar Rings */
+.hub-radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translateZ(-20px);
+}
+
+.ring-outer {
+  width: 510px;
+  height: 510px;
+  border: 1px solid rgba(148, 163, 184, 0.09);
+  animation: spinSlow 60s linear infinite;
+}
+
+.ring-mid {
+  width: 390px;
+  height: 390px;
+  border: 1px dashed rgba(17, 211, 176, 0.18);
+  animation: spinSlow 42s linear infinite reverse;
+}
+
+.ring-inner {
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(34, 200, 230, 0.15);
+  animation: spinSlow 28s linear infinite;
+}
+
+/* Live Telemetry Floating Chips on Rings */
+.hud-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  background: rgba(9, 17, 32, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 600;
+  color: #cbd5e1;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  z-index: 4;
+  pointer-events: none;
+  transition: transform 0.25s ease-out;
+}
+
+.chip-gsc {
+  top: 17%;
+  left: 17%;
+  animation: chipFloat 5s ease-in-out infinite;
+}
+
+.chip-ppc {
+  top: 25%;
+  right: 13%;
+  animation: chipFloat 5.5s ease-in-out -1.8s infinite;
+}
+
+.chip-ga4 {
+  bottom: 23%;
+  right: 14%;
+  animation: chipFloat 6s ease-in-out -3.2s infinite;
+}
+
+@keyframes chipFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.chip-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.chip-pulse-dot.green { background: var(--teal); box-shadow: 0 0 6px var(--teal); animation: pulseDot 2s infinite; }
+.chip-pulse-dot.blue  { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; animation: pulseDot 2s infinite 0.5s; }
+.chip-pulse-dot.amber { background: #f59e0b; box-shadow: 0 0 6px #f59e0b; animation: pulseDot 2s infinite 1s; }
+
+/* Dynamic Laser Connections (SVG) */
+.hub-connections-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.conn-laser {
+  stroke: rgba(17, 211, 176, 0.35);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 8;
+  animation: dashLaser 20s linear infinite;
+  transition: stroke 0.3s, stroke-width 0.3s, filter 0.3s;
+}
+
+.conn-laser.active {
+  stroke: var(--teal);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px var(--teal));
+}
+
+.node-anchor {
+  filter: drop-shadow(0 0 4px currentColor);
+}
+.node-anchor.green  { fill: var(--teal); color: var(--teal); }
+.node-anchor.blue   { fill: #38bdf8; color: #38bdf8; }
+.node-anchor.indigo { fill: #818cf8; color: #818cf8; }
+.node-anchor.amber  { fill: #f59e0b; color: #f59e0b; }
+.node-anchor.cyan   { fill: #22c8e6; color: #22c8e6; }
+.node-anchor.violet { fill: #c084fc; color: #c084fc; }
+.node-anchor.pink   { fill: #ec4899; color: #ec4899; }
+.node-anchor.gold   { fill: #eab308; color: #eab308; }
+
+.laser-photon {
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* CENTRAL HUB CORE: DIGITAL GROWTH */
+.central-growth-hub {
+  position: relative;
+  z-index: 5;
+  width: 205px;
+  height: 225px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(16, 28, 48, 0.96), rgba(8, 14, 25, 0.98));
+  border: 1.5px solid rgba(17, 211, 176, 0.45);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 40px rgba(17, 211, 176, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  text-align: center;
+  transform: translateZ(30px);
+  animation: hubCoreFloat 6s ease-in-out infinite;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform 0.3s;
+}
+
+.central-growth-hub:hover {
+  border-color: var(--teal);
+  box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.85),
+    0 0 60px rgba(17, 211, 176, 0.45);
+  transform: translateZ(40px) scale(1.02);
+}
+
+.hub-core-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(17, 211, 176, 0.12);
+  border: 1px solid rgba(17, 211, 176, 0.35);
+  display: grid;
+  place-items: center;
+  margin-bottom: 10px;
+}
+
+.core-symbol {
+  font-size: 22px;
+  color: var(--teal);
+  animation: spinSlow 20s linear infinite;
+}
+
+.hub-sublabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  color: #7dd3fc;
+  text-transform: uppercase;
+}
+
+.pulse-dot-sm {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 5px var(--teal);
+  animation: pulseDot 2s infinite;
+}
+
+.hub-title {
+  font-family: var(--font-display);
+  font-size: 23px;
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: var(--text-primary);
+  margin: 5px 0;
+}
+
+.hub-divider {
+  width: 44px;
+  height: 2px;
+  background: var(--grad-teal-cyan);
+  margin: 7px auto;
+  border-radius: 2px;
+}
+
+.hub-tagline {
+  display: block;
+  font-size: 9.5px;
+  color: #94a3b8;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
+
+.hub-hover-hint {
+  display: block;
+  font-size: 8.5px;
+  color: #64748b;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+/* 8 ORBITAL MARKETING NODES */
+.hub-node-card {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  min-width: 150px;
+  background: rgba(11, 19, 34, 0.94);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease-out, border-color 0.25s, box-shadow 0.25s;
+}
+
+.hub-node-card:hover {
+  transform: translateZ(25px) scale(1.04);
+}
+
+.hub-node-card.node-seo:hover         { border-color: var(--teal); box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(17, 211, 176, 0.3); }
+.hub-node-card.node-google-ads:hover  { border-color: #38bdf8; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.3); }
+.hub-node-card.node-meta-ads:hover    { border-color: #818cf8; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(129, 140, 248, 0.3); }
+.hub-node-card.node-analytics:hover   { border-color: #f59e0b; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.3); }
+.hub-node-card.node-conversion:hover  { border-color: #22c8e6; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(34, 200, 230, 0.3); }
+.hub-node-card.node-content:hover     { border-color: #c084fc; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(192, 132, 252, 0.3); }
+.hub-node-card.node-smm:hover         { border-color: #ec4899; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(236, 72, 153, 0.3); }
+.hub-node-card.node-strategy:hover    { border-color: #eab308; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(234, 179, 8, 0.3); }
+
+.node-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.node-icon.green  { background: rgba(17, 211, 176, 0.14); color: var(--teal); }
+.node-icon.blue   { background: rgba(56, 189, 248, 0.14); color: #38bdf8; }
+.node-icon.indigo { background: rgba(129, 140, 248, 0.14); color: #818cf8; }
+.node-icon.amber  { background: rgba(245, 158, 11, 0.14); color: #f59e0b; }
+.node-icon.cyan   { background: rgba(34, 200, 230, 0.14); color: #22c8e6; }
+.node-icon.violet { background: rgba(192, 132, 252, 0.14); color: #c084fc; }
+.node-icon.pink   { background: rgba(236, 72, 153, 0.14); color: #ec4899; }
+.node-icon.gold   { background: rgba(234, 179, 8, 0.14);  color: #eab308; }
+
+.node-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.node-category {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  color: var(--text-muted);
+}
+
+.node-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.node-ping {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-left: auto;
+  opacity: 0.7;
+}
+.node-ping.green  { background: var(--teal); box-shadow: 0 0 5px var(--teal); }
+.node-ping.blue   { background: #38bdf8; box-shadow: 0 0 5px #38bdf8; }
+.node-ping.indigo { background: #818cf8; box-shadow: 0 0 5px #818cf8; }
+.node-ping.amber  { background: #f59e0b; box-shadow: 0 0 5px #f59e0b; }
+.node-ping.cyan   { background: #22c8e6; box-shadow: 0 0 5px #22c8e6; }
+.node-ping.violet { background: #c084fc; box-shadow: 0 0 5px #c084fc; }
+.node-ping.pink   { background: #ec4899; box-shadow: 0 0 5px #ec4899; }
+.node-ping.gold   { background: #eab308; box-shadow: 0 0 5px #eab308; }
+
+/* Node Orbital Positioning (Clockwise around center 300, 300) */
+.node-seo         { top: 2%;   left: 36%; animation: nodeFloat 6s ease-in-out infinite; }
+.node-google-ads  { top: 12%;  right: 0%; animation: nodeFloat 6s ease-in-out -1.5s infinite; }
+.node-meta-ads    { top: 44%;  right: -8%; animation: nodeFloat 6s ease-in-out -3s infinite; }
+.node-analytics   { bottom: 12%; right: 2%; animation: nodeFloat 6s ease-in-out -4.5s infinite; }
+.node-conversion  { bottom: 0%;  left: 36%; animation: nodeFloat 6s ease-in-out -0.8s infinite; }
+.node-content     { bottom: 12%; left: 0%; animation: nodeFloat 6s ease-in-out -2.2s infinite; }
+.node-smm         { top: 44%;  left: -8%; animation: nodeFloat 6s ease-in-out -3.8s infinite; }
+.node-strategy    { top: 12%;  left: 2%;  animation: nodeFloat 6s ease-in-out -5.1s infinite; }
+
+.hub-footer-caption {
+  position: absolute;
+  bottom: -40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.caption-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 6px var(--teal);
+}
+
+/* Scroll-Down Prompt */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  transition: color var(--transition-fast);
+  z-index: 10;
+}
+
+.hero-scroll-cue:hover {
+  color: var(--teal);
+}
+
+.mouse-icon {
+  width: 14px;
+  height: 22px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 10px;
+  position: relative;
+}
+
+.mouse-wheel {
+  position: absolute;
+  top: 4px;
+  left: 4.5px;
+  width: 2px;
+  height: 4px;
+  background: var(--teal);
+  border-radius: 2px;
+  animation: mouseWheel 1.6s ease-in-out infinite;
+}
+
+.cue-arrow {
+  color: var(--teal);
+  animation: arrowBounce 1.6s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------------
+   COMMON SECTION STYLES & HEADERS
+   ------------------------------------------------------------- */
+.section {
+  position: relative;
+  padding: 120px 0;
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-kicker {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.2vw, 54px);
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 16.5px;
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* -------------------------------------------------------------
+   01 / ABOUT SECTION: PHILOSOPHY & WORK PRINCIPLES
+   ------------------------------------------------------------- */
+.about-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(12, 20, 36, 0.4) 50%, transparent 100%);
+}
+
+.about-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.about-pillar-card {
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: 34px 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.about-pillar-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-hover);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+}
+
+.pillar-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.pillar-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.pillar-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.about-pillar-card h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.pillar-lead {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.about-pillar-card p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.pillar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.pillar-tags span {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(17, 211, 176, 0.08);
+  border: 1px solid rgba(17, 211, 176, 0.2);
+  color: #76f0d4;
+}
+
+.pillar-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.pillar-checklist li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  position: relative;
+  padding-left: 18px;
+}
+
+.pillar-checklist li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}
+
+.pillar-checklist strong {
+  color: #f1f5f9;
+}
+
+/* Methodology Flow (Strategy -> Execution -> Tracking -> Analysis -> Optimisation) */
+.methodology-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(6, 12, 22, 0.7);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.flow-step:hover {
+  border-color: var(--teal);
+}
+
+.step-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(17, 211, 176, 0.15);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.flow-step strong {
+  display: block;
+  font-size: 12.5px;
+  color: var(--text-primary);
+}
+
+.flow-step small {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.flow-arrow {
+  text-align: center;
+  font-size: 12px;
+  color: var(--teal);
+  line-height: 1;
+}
+
+/* -------------------------------------------------------------
+   02 / DIGITAL MARKETING EVOLUTION MATRIX (COMPACT 4-PHASE GRID)
+   ------------------------------------------------------------- */
+.journey-section {
+  background: radial-gradient(ellipse at 50% 10%, rgba(17, 211, 176, 0.05) 0%, transparent 70%);
+}
+
+.evolution-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+.evolution-card {
+  position: relative;
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.evolution-card:hover {
+  border-color: var(--line-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.evolution-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.evolution-phase-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-subtle);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.evolution-phase-pill.active {
+  color: #041018;
+  background: var(--teal);
+  border-color: var(--teal);
+  font-weight: 800;
+  box-shadow: 0 0 12px rgba(17, 211, 176, 0.4);
+}
+
+.evolution-icon {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.evolution-icon.highlight {
+  color: var(--teal);
+}
+
+.evolution-card h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.evolution-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.evolution-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.evolution-tools span {
+  font-size: 10px;
+  color: #94a3b8;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.evolution-card.highlight-current {
+  border-color: rgba(17, 211, 176, 0.45);
+  background: linear-gradient(160deg, rgba(17, 211, 176, 0.07) 0%, rgba(10, 18, 30, 0.95) 100%);
+  box-shadow: 0 10px 30px rgba(17, 211, 176, 0.12);
+}
+
+.evolution-card.highlight-current:hover {
+  border-color: var(--teal);
+  box-shadow: 0 14px 35px rgba(17, 211, 176, 0.25);
+}
+
+/* -------------------------------------------------------------
+   03 / CAPABILITY MATRIX (SKILLS)
+   ------------------------------------------------------------- */
+.expertise-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(12, 20, 36, 0.6) 50%, transparent 100%);
+}
+
+.skill-category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.skill-tab {
+  padding: 9px 18px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line-subtle);
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.skill-tab:hover,
+.skill-tab.active {
+  background: var(--teal);
+  color: #041018;
+  border-color: var(--teal);
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(17, 211, 176, 0.3);
+}
+
+.skill-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skill-card {
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent, var(--teal));
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.skill-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.skill-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.skill-icon-badge.green  { background: rgba(17, 211, 176, 0.12); color: var(--teal); }
+.skill-icon-badge.pink   { background: rgba(236, 72, 153, 0.12); color: var(--pink); }
+.skill-icon-badge.blue   { background: rgba(59, 130, 246, 0.12); color: var(--blue); }
+.skill-icon-badge.amber  { background: rgba(245, 158, 11, 0.12); color: var(--amber); }
+.skill-icon-badge.violet { background: rgba(139, 92, 246, 0.12); color: var(--purple); }
+.skill-icon-badge.cyan   { background: rgba(34, 200, 230, 0.12); color: var(--cyan); }
+
+.skill-id {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.skill-card h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.skill-pills span {
+  font-size: 11px;
+  color: #cbd5e1;
+  padding: 5px 9px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.skill-card:hover .skill-pills span {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* -------------------------------------------------------------
+   04 / CHANNEL DEEP DIVES & WORKSPACES
+   ------------------------------------------------------------- */
+.channel-hubs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.channel-feature-card {
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.channel-feature-card:hover {
+  border-color: var(--line-hover);
+  transform: translateY(-4px);
+}
+
+.channel-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.channel-icon-pill {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.channel-icon-pill.green { background: rgba(17, 211, 176, 0.12); color: var(--teal); }
+.channel-icon-pill.blue  { background: rgba(59, 130, 246, 0.12); color: var(--blue); }
+.channel-icon-pill.pink  { background: rgba(236, 72, 153, 0.12); color: var(--pink); }
+.channel-icon-pill.amber { background: rgba(245, 158, 11, 0.12); color: var(--amber); }
+
+.channel-card-head h3 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.channel-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+  border: 1px solid var(--line-subtle);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.channel-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* Channel Deliverables Compact List */
+.channel-deliverables-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.channel-deliverables-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.channel-deliverables-list li div strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.deliverable-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.deliverable-check.green {
+  background: rgba(17, 211, 176, 0.12);
+  color: var(--teal);
+  border: 1px solid rgba(17, 211, 176, 0.3);
+}
+
+.deliverable-check.blue {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.deliverable-check.pink {
+  background: rgba(236, 72, 153, 0.12);
+  color: #f472b6;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+.deliverable-check.amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.channel-takeaway {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(17, 211, 176, 0.06);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 12px;
+  color: #b3dfd6;
+  margin-top: auto;
+}
+
+.takeaway-bullet {
+  color: var(--teal);
+  font-weight: 800;
+}
+
+/* -------------------------------------------------------------
+   05 / TOOLS & TECHNOLOGIES MARQUEE
+   ------------------------------------------------------------- */
+.toolkit-section {
+  overflow: hidden;
+  background: linear-gradient(180deg, transparent 0%, rgba(12, 20, 36, 0.4) 50%, transparent 100%);
+}
+
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0;
+  mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+}
+
+.reverse-marquee .marquee-track {
+  animation: marqueeScrollReverse 45s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.tool-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(12, 20, 36, 0.85);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tool-chip:hover {
+  border-color: var(--teal);
+  background: rgba(17, 211, 176, 0.1);
+  transform: translateY(-2px);
+}
+
+.tool-icon {
+  font-size: 18px;
+}
+
+.tool-chip strong {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.tool-chip small {
+  font-size: 10px;
+  color: var(--teal);
+  padding: 2px 6px;
+  background: rgba(17, 211, 176, 0.1);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.tool-info-tooltip {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--teal);
+  margin-top: 24px;
+  min-height: 24px;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------
+   06 / COMPLETE PORTFOLIO PROJECTS SECTION
+   ------------------------------------------------------------- */
+.projects-section {
+  background: radial-gradient(ellipse at 50% 0%, rgba(34, 200, 230, 0.05) 0%, transparent 70%);
+}
+
+.header-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.project-count-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #041018;
+  background: var(--grad-teal-cyan);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+/* Search & Toolbar */
+.portfolio-toolbar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+  background: rgba(12, 20, 36, 0.6);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  backdrop-filter: blur(14px);
+}
+
+.toolbar-search-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  align-items: center;
+  background: rgba(6, 11, 20, 0.8);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0 14px;
+  transition: border-color var(--transition-fast);
+}
+
+.search-input-wrap:focus-within {
+  border-color: var(--teal);
+  box-shadow: 0 0 15px rgba(17, 211, 176, 0.15);
+}
+
+.search-icon {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.search-input-wrap input {
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 13.5px;
+}
+
+.search-input-wrap input::placeholder {
+  color: var(--text-muted);
+}
+
+.clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.clear-btn:hover {
+  color: var(--text-primary);
+}
+
+/* Location Filters */
+.location-filters-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.loc-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.loc-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.loc-btn {
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line-subtle);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.loc-btn:hover,
+.loc-btn.active {
+  background: rgba(17, 211, 176, 0.14);
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* Service Filter Buttons Row */
+.service-filters-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.svc-filter-btn {
+  padding: 7px 13px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid var(--line-subtle);
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.svc-filter-btn:hover,
+.svc-filter-btn.active {
+  background: var(--teal);
+  color: #041018;
+  border-color: var(--teal);
+  box-shadow: 0 4px 15px rgba(17, 211, 176, 0.25);
+}
+
+/* Projects Cards Grid */
+.project-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.rich-project-card {
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  animation: cardFadeIn 0.4s ease forwards;
+}
+
+.rich-project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 100% 0%, rgba(17, 211, 176, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.rich-project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-hover);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+.rich-project-card:hover::before {
+  opacity: 1;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.client-avatar-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #102436, #16364a);
+  border: 1px solid rgba(17, 211, 176, 0.3);
+  color: #76f0d4;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.client-meta-info h3 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.client-subtext {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Service Pills */
+.card-service-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.card-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+.badge-seo         { background: rgba(17, 211, 176, 0.12); color: #5eead4; border: 1px solid rgba(17, 211, 176, 0.25); }
+.badge-smm         { background: rgba(236, 72, 153, 0.12); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.25); }
+.badge-google-ads  { background: rgba(59, 130, 246, 0.12); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.25); }
+.badge-meta-ads    { background: rgba(99, 102, 241, 0.12); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.25); }
+.badge-content     { background: rgba(139, 92, 246, 0.12); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.25); }
+.badge-analytics   { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.25); }
+.badge-website     { background: rgba(34, 200, 230, 0.12); color: #38bdf8; border: 1px solid rgba(34, 200, 230, 0.25); }
+.badge-tech-seo    { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); }
+
+/* What I Worked On Activity List */
+.card-work-summary {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.work-summary-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.work-activities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.work-activities-list li {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 14px;
+}
+
+.work-activities-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}
+
+/* Card Actions */
+.card-bottom-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto;
+}
+
+.btn-open-case {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform var(--transition-fast);
+}
+
+.btn-open-case:hover {
+  transform: translateX(3px);
+  color: var(--cyan);
+}
+
+.live-site-link {
+  font-size: 11px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.live-site-link:hover {
+  color: var(--text-primary);
+}
+
+.empty-projects-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  border: 1px dashed var(--line-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+}
+
+.portfolio-compliance-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: rgba(12, 20, 36, 0.6);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.notice-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------
+   07 / MANAGEMENT WORKFLOW PIPELINE
+   ------------------------------------------------------------- */
+.workflow-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(12, 20, 36, 0.4) 50%, transparent 100%);
+}
+
+.workflow-steps-pipeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pipeline-card {
+  position: relative;
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.pipeline-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--line-hover);
+}
+
+.card-num-watermark {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+
+.pipeline-icon {
+  font-size: 24px;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.pipeline-card h4 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.pipeline-card p {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.pipeline-deliverable {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #7dd3fc;
+  padding: 6px 10px;
+  background: rgba(34, 200, 230, 0.08);
+  border-radius: var(--radius-sm);
+  margin-top: auto;
+}
+
+.highlight-opt {
+  grid-column: span 2;
+  background: linear-gradient(145deg, rgba(17, 211, 176, 0.08) 0%, rgba(9, 15, 27, 0.98) 100%);
+  border-color: rgba(17, 211, 176, 0.35);
+}
+
+/* -------------------------------------------------------------
+   08 / PROFESSIONAL STRENGTHS
+   ------------------------------------------------------------- */
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.strength-card {
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.strength-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--line-hover);
+}
+
+.strength-icon {
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.strength-card h4 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.strength-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* -------------------------------------------------------------
+   09 / CONTACT & CAREER CONVERSATION
+   ------------------------------------------------------------- */
+.contact-section {
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.contact-card-shell {
+  position: relative;
+  background: linear-gradient(135deg, #0e172a 0%, #070d18 100%);
+  border: 1px solid rgba(17, 211, 176, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 56px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.contact-glow-backplate {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(17, 211, 176, 0.18), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.contact-split-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-lead-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 16px 0 24px 0;
+}
+
+.contact-core-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.spec-chip {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(17, 211, 176, 0.08);
+  border: 1px solid rgba(17, 211, 176, 0.2);
+  color: #76f0d4;
+}
+
+.contact-direct-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.channel-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ch-icon {
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.ch-details small {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.ch-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--teal);
+  transition: color var(--transition-fast);
+}
+
+.ch-link:hover {
+  color: var(--cyan);
+}
+
+.ch-text {
+  font-size: 13.5px;
+  color: #cbd5e1;
+}
+
+.available-tag {
+  color: #5eead4;
+  font-weight: 600;
+}
+
+/* Form */
+.interactive-form {
+  background: rgba(6, 12, 22, 0.7);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  backdrop-filter: blur(14px);
+}
+
+.form-header {
+  margin-bottom: 22px;
+}
+
+.form-header h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.form-header p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(14, 23, 40, 0.8);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 14px rgba(17, 211, 176, 0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.btn-submit-form {
+  width: 100%;
+  padding: 14px;
+  background: var(--grad-teal-cyan);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #041018;
+  font-size: 13.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 8px 24px rgba(17, 211, 176, 0.25);
+  margin-top: 8px;
+}
+
+.btn-submit-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(17, 211, 176, 0.45);
+}
+
+.form-success-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: var(--radius-sm);
+  margin-top: 16px;
+}
+
+.success-icon {
+  font-size: 20px;
+  color: #34d399;
+}
+
+.form-success-banner strong {
+  display: block;
+  font-size: 13px;
+  color: #f0fdf4;
+}
+
+.form-success-banner p {
+  font-size: 11px;
+  color: #bbf7d0;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------- */
+.main-footer {
+  border-top: 1px solid var(--line-subtle);
+  background: rgba(4, 7, 14, 0.95);
+  padding: 60px 0 30px;
+}
+
+.footer-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-left {
+  max-width: 440px;
+}
+
+.footer-tagline {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+.footer-nav-links {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col strong {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.footer-col a {
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--teal);
+}
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 24px;
+}
+
+.bottom-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.footer-location-tag {
+  color: #94a3b8;
+}
+
+.back-to-top-btn {
+  color: var(--teal);
+  font-weight: 700;
+  transition: transform var(--transition-fast);
+}
+
+.back-to-top-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* -------------------------------------------------------------
+   CASE STUDY MODAL DIALOG
+   ------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(4, 8, 16, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(150deg, #0e172a 0%, #070d18 100%);
+  border: 1px solid rgba(17, 211, 176, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 38px 40px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(17, 211, 176, 0.15);
+  animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line-subtle);
+  color: var(--text-primary);
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+}
+
+.modal-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.modal-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #102436, #16364a);
+  border: 1px solid var(--teal);
+  color: #76f0d4;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.modal-header h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.modal-submeta {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.modal-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.case-section {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.case-section:nth-child(1),
+.case-section:nth-child(4) {
+  grid-column: 1 / -1;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+
+.case-section p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.modal-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-checklist li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 18px;
+  line-height: 1.5;
+}
+
+.modal-checklist li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.modal-tool-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.modal-tool-pills span {
+  font-size: 11px;
+  padding: 4px 9px;
+  background: rgba(17, 211, 176, 0.08);
+  border: 1px solid rgba(17, 211, 176, 0.2);
+  border-radius: var(--radius-sm);
+  color: #76f0d4;
+}
+
+.modal-footer-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* -------------------------------------------------------------
+   KEYFRAME ANIMATIONS
+   ------------------------------------------------------------- */
+@keyframes heroEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(17, 211, 176, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(17, 211, 176, 0);
+  }
+}
+
+@keyframes svPulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes orbDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.08); }
+  100% { transform: translate(-30px, 40px) scale(0.95); }
+}
+
+@keyframes gridDrift {
+  to { background-position: 50px 50px; }
+}
+
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes hubBreathe {
+  0% { transform: scale(0.92); opacity: 0.7; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes hubCoreFloat {
+  0%, 100% { transform: translateZ(30px) translateY(0); }
+  50% { transform: translateZ(30px) translateY(-8px); }
+}
+
+@keyframes nodeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes dashLaser {
+  to { stroke-dashoffset: -280; }
+}
+
+@keyframes mouseWheel {
+  0% { opacity: 0; transform: translateY(0); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@keyframes drawSparkline {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes sparkPulse {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; }
+}
+
+@keyframes ringFill {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 35; }
+}
+
+@keyframes barPulse {
+  0% { transform: scaleY(0.85); }
+  100% { transform: scaleY(1.05); }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeScrollReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll Reveal Observer class */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------------
+   RESPONSIVE DESIGN (1440px, 1280px, 1024px, 768px, 390px)
+   ------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .hero-container {
+    gap: 20px;
+  }
+  .hero-main-title {
+    font-size: clamp(42px, 5vw, 62px);
+  }
+  .martech-cockpit-frame {
+    max-width: 520px;
+  }
+  
+  .project-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .workflow-steps-pipeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .highlight-opt {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav-status-badge {
+    display: none;
+  }
+  .desktop-menu {
+    gap: 16px;
+  }
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-content-col {
+    max-width: 680px;
+  }
+  .hero-visual-col {
+    min-height: 520px;
+    margin-top: 10px;
+  }
+  .about-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .evolution-matrix-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .channel-hubs-grid {
+    grid-template-columns: 1fr;
+  }
+  .strengths-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-split-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-card-shell {
+    padding: 38px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 32px, 640px);
+  }
+  .nav-container {
+    height: 70px;
+  }
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-toggle-btn {
+    display: flex;
+  }
+  
+  .hero-section {
+    padding: 40px 0 80px;
+  }
+  .hero-main-title {
+    font-size: clamp(38px, 9vw, 52px);
+    letter-spacing: -1.5px;
+  }
+  .hero-visual-col {
+    min-height: auto;
+    width: 100%;
+  }
+  .martech-cockpit-frame {
+    max-width: 100%;
+    padding: 16px 14px;
+  }
+  .cockpit-stations-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .cockpit-floating-telemetry {
+    display: none;
+  }
+  .hero-proof-strip {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .project-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .evolution-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .strengths-grid {
+    grid-template-columns: 1fr;
+  }
+  .workflow-steps-pipeline {
+    grid-template-columns: 1fr;
+  }
+  .highlight-opt {
+    grid-column: span 1;
+  }
+  .case-study-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer-nav-links {
+    gap: 40px;
+  }
+  .bottom-flex {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .cursor-glow {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-main-title {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+  .hero-bio-paragraph {
+    font-size: 14.5px;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-primary-glow,
+  .btn-secondary-ghost {
+    justify-content: center;
+  }
+  .growth-hub-stage {
+    transform: scale(0.72);
+  }
+  .modal-card {
+    padding: 24px 18px;
+  }
+}
+
+/* -------------------------------------------------------------
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-anim-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+/* -------------------------------------------------------------
+   VERIFIED GOOGLE SEARCH CONSOLE PERFORMANCE REPORTS SECTION
+   ------------------------------------------------------------- */
+.reports-section {
+  background: radial-gradient(ellipse at 50% 0%, rgba(17, 211, 176, 0.08) 0%, transparent 70%);
+  padding: 100px 0;
+}
+
+.gsc-reports-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 30px;
+}
+
+.gsc-report-card {
+  background: var(--grad-card-surface);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.gsc-report-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--teal);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(17, 211, 176, 0.15);
+}
+
+.gsc-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.gsc-client-identity h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.gsc-domain-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--teal);
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.gsc-domain-tag:hover {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+
+.gsc-region-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line-subtle);
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+
+/* Metric Chips Strip */
+.gsc-metrics-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  background: rgba(6, 11, 20, 0.85);
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  margin-bottom: 18px;
+}
+
+.gsc-metric-chip {
+  text-align: center;
+  padding: 4px;
+}
+
+.gsc-metric-chip small {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.gsc-metric-chip strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.gsc-metric-chip strong.highlight-teal {
+  color: var(--teal);
+}
+
+.gsc-metric-chip strong.highlight-blue {
+  color: #38bdf8;
+}
+
+/* Screenshot Preview Container */
+.gsc-screenshot-wrap {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: #040812;
+  margin-bottom: 18px;
+  cursor: pointer;
+  group: 1;
+}
+
+.gsc-screenshot-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.gsc-screenshot-wrap:hover img {
+  transform: scale(1.02);
+}
+
+.gsc-zoom-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 10, 18, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gsc-screenshot-wrap:hover .gsc-zoom-overlay {
+  opacity: 1;
+}
+
+/* Timeline pill (for Dr Waseem 6 months note) */
+.gsc-timeline-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  color: #34d399;
+  margin-bottom: 12px;
+}
+
+.gsc-card-work-points {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.gsc-card-work-points strong {
+  color: var(--text-primary);
+}
+
+/* Modal Screenshot Styling */
+.modal-gsc-container {
+  grid-column: 1 / -1;
+  background: rgba(6, 12, 22, 0.95);
+  border: 1px solid rgba(17, 211, 176, 0.3);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.modal-gsc-container h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-gsc-img-wrap {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--line-subtle);
+  margin-bottom: 14px;
+}
+
+.modal-gsc-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-gsc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  background: rgba(17, 211, 176, 0.12);
+  border: 1px solid rgba(17, 211, 176, 0.3);
+  border-radius: 4px;
+  color: #5eead4;
+  margin-bottom: 8px;
+}
+
+  </style>
 </head>
 <body>
 
@@ -1444,5 +4842,1573 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+/**
+ * ==========================================================================
+ * SRI VIDYA | DIGITAL MARKETING MANAGER PORTFOLIO
+ * 100% Focused on Sri Vidya's Actual Work, Deliverables & Hands-on Execution
+ * ==========================================================================
+ */
+
+// ==========================================================================
+// 1. COMPREHENSIVE PROJECT DATABASE (ALL 26 DOCUMENTED CLIENT ACCOUNTS)
+// Each entry maps strictly to Sri Vidya's verified work and deliverables.
+// ==========================================================================
+const clientProjects = [
+  {
+    "id": "dr-waseem-cardiologist",
+    "name": "Dr Waseem Cardiologist",
+    "initials": "DW",
+    "industry": "Cardiology",
+    "location": "Bengaluru, India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "SMM",
+      "Content"
+    ],
+    "url": "https://drwaseemcardiologist.com/",
+    "myRole": "Healthcare Content Strategist & SEO Lead",
+    "myWorkList": [
+      "Healthcare Content Strategy & Medical Ethics Compliance",
+      "Keyword Research for Cardiovascular Symptoms & Care",
+      "Blog Content Planning & Copywriting on Heart Health",
+      "Social Media Content Creation for Patient Awareness",
+      "Website Content Writing & Physician Credentials",
+      "Local Search Optimisation for Doctor Profile"
+    ],
+    "toolsUsed": [
+      "WordPress",
+      "Yoast SEO",
+      "Google Search Console",
+      "Canva",
+      "Google Trends"
+    ],
+    "workSummary": "Researched cardiology search intent, authored medically compliant patient education blogs, designed heart health awareness social posts, and optimized doctor consultation pages for local search.",
+    "gscReport": {
+      "image": "images/gsc-dr-waseem.png",
+      "clicks": "223",
+      "impressions": "6.53K",
+      "ctr": "3.4%",
+      "position": "4.0",
+      "badgeSummary": "Avg. Pos 4.0 · Started 6 Months Ago",
+      "timelineNote": "Started 6 Months Ago · Page 1 Google Average Position (4.0)"
+    }
+  },
+  {
+    "id": "orafix-dental-care",
+    "name": "OraFix Dental Care",
+    "initials": "OD",
+    "industry": "Dental Healthcare",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "SMM",
+      "Meta Ads",
+      "Content"
+    ],
+    "url": "https://orafixdentalcare.in/",
+    "myRole": "Digital Marketing Specialist — Dental Content & Paid Ads",
+    "myWorkList": [
+      "Dental Content Strategy Formulation",
+      "Social Media Content Creation & Educational Reels",
+      "Engaging Caption Writing for Smile Treatments",
+      "Content Calendar Scheduling",
+      "Meta Ads Patient Consultation Lead Campaigns",
+      "Local Clinic SEO & Treatment Page Optimisation"
+    ],
+    "toolsUsed": [
+      "Meta Ads Manager",
+      "Canva",
+      "WordPress",
+      "Google Search Console",
+      "Meta Business Suite"
+    ],
+    "workSummary": "Planned educational dental content calendars, authored engaging captions for treatment carousels, executed Meta consultation inquiry ads, and optimized clinic service pages for local search."
+  },
+  {
+    "id": "toothlyfe-dental",
+    "name": "Toothlyfe Dental Clinic",
+    "initials": "TL",
+    "industry": "Dental Healthcare",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "SMM",
+      "Meta Ads",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Digital Marketing Manager — Dental Search & Social Campaigns",
+    "myWorkList": [
+      "Dental Patient Keyword Research & Local Search Optimisation",
+      "Educational Social Media Content Strategy (Implants, Aligners, Smile Care)",
+      "Meta Ads Patient Acquisition & Appointment Lead Gen Setup",
+      "Google Business Profile Optimisation & Local Map Pack Ranking",
+      "Monthly Dental Content Calendars & Patient Inquiry Tracking"
+    ],
+    "toolsUsed": [
+      "Google Search Console",
+      "Meta Ads Manager",
+      "Canva",
+      "Google Business Profile",
+      "WordPress"
+    ],
+    "workSummary": "Formulated patient acquisition and brand visibility campaigns for clinical and cosmetic dentistry: conducted specialized dental keyword research, built Meta Ads consultation lead funnels, and planned monthly educational patient carousels."
+  },
+  {
+    "id": "avia-clinic",
+    "name": "Avia Clinic",
+    "initials": "AC",
+    "industry": "Healthcare",
+    "location": "United Kingdom",
+    "country": "United Kingdom",
+    "services": [
+      "SEO",
+      "SMM",
+      "Meta Ads",
+      "Content",
+      "Website"
+    ],
+    "url": "https://aviaclinic.co.uk/",
+    "myRole": "Digital Marketing Manager — SEO, SMM & Campaign Delivery",
+    "myWorkList": [
+      "SEO & Keyword Research",
+      "SMM & Social Media Strategy",
+      "Meta Ads Campaign Setup",
+      "Content Calendar Planning",
+      "Website Content Writing",
+      "Campaign Planning & Coordination"
+    ],
+    "toolsUsed": [
+      "Google Search Console",
+      "Meta Ads Manager",
+      "WordPress",
+      "Canva",
+      "Google Trends"
+    ],
+    "workSummary": "Delivered comprehensive search and social marketing support, including monthly content calendar planning, treatment keyword research, website content writing, and Meta Ads campaign setup.",
+    "gscReport": {
+      "image": "images/gsc-avia-clinic.png",
+      "clicks": "442",
+      "impressions": "34.4K",
+      "ctr": "1.3%",
+      "position": "26.0",
+      "badgeSummary": "34.4K Impressions · 442 Clicks",
+      "timelineNote": "3 Months Google Search Console Performance"
+    }
+  },
+  {
+    "id": "apex-maintenance",
+    "name": "Apex Maintenance Services",
+    "initials": "AM",
+    "industry": "Maintenance Services",
+    "location": "Auckland, New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "Content",
+      "Website",
+      "Technical SEO"
+    ],
+    "url": "",
+    "myRole": "SEO & Content Specialist",
+    "myWorkList": [
+      "Keyword Research for Commercial & Residential Services",
+      "Service Page SEO & On-Page Optimisation",
+      "Blog Content Strategy & Writing",
+      "Local SEO & Auckland Map Presence",
+      "Website Optimisation & Speed Review",
+      "Monthly SEO Reporting Decks"
+    ],
+    "toolsUsed": [
+      "SEMrush",
+      "Google Search Console",
+      "Rank Math",
+      "WordPress",
+      "Screaming Frog"
+    ],
+    "workSummary": "Conducted in-depth keyword research for commercial property maintenance, authored optimized service-page copy, wrote informational blog posts, managed local Auckland SEO, and prepared monthly SEO reports.",
+    "gscReport": {
+      "image": "images/gsc-apex-maintenance.png",
+      "clicks": "26",
+      "impressions": "4.4K",
+      "ctr": "0.6%",
+      "position": "32.3",
+      "badgeSummary": "4.4K Impressions · 26 Clicks",
+      "timelineNote": "3 Months Google Search Console Performance"
+    }
+  },
+  {
+    "id": "doctors-coventry",
+    "name": "Doctors Coventry",
+    "initials": "DC",
+    "industry": "Healthcare",
+    "location": "Coventry, United Kingdom",
+    "country": "United Kingdom",
+    "services": [
+      "SEO",
+      "SMM",
+      "Google Ads",
+      "Meta Ads",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Digital Marketing Manager — Search, Paid Ads & Compliance",
+    "myWorkList": [
+      "Keyword Research for Clinical & Private Treatments",
+      "Google Ads Policy Troubleshooting & Disapproval Resolution",
+      "Google Ads Campaign Setup & Bid Management",
+      "Meta Ads Patient Acquisition Campaigns",
+      "SEO Pages Creation & Content Optimisation",
+      "Social Media Content Planning",
+      "Campaign Optimisation & Negative Keyword Sculpting"
+    ],
+    "toolsUsed": [
+      "Google Ads",
+      "Google Search Console",
+      "Meta Ads Manager",
+      "GA4",
+      "WordPress"
+    ],
+    "workSummary": "Resolved strict Google Ads healthcare policy disapproval issues, researched compliant medical keywords, established search and Meta ad campaigns, created SEO-focused clinic pages, and managed social content.",
+    "gscReport": {
+      "image": "images/gsc-doctors-coventry.png",
+      "clicks": "3.48K",
+      "impressions": "143K",
+      "ctr": "2.4%",
+      "position": "13.4",
+      "badgeSummary": "143K Impressions · 3.48K Clicks",
+      "timelineNote": "3 Months Google Search Console Performance"
+    }
+  },
+  {
+    "id": "estilo-hair-beauty",
+    "name": "Estilo Hair & Beauty",
+    "initials": "EH",
+    "industry": "Beauty & Salon",
+    "location": "Auckland, New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Content"
+    ],
+    "url": "https://estilosalon.co.nz/",
+    "myRole": "Digital Marketing Specialist — SEO & Social Strategy",
+    "myWorkList": [
+      "SEO Support & Salon Service Keywords",
+      "Content Strategy Formulation",
+      "Blog Content Writing & Haircare Advice",
+      "Social Media Calendar Planning",
+      "Instagram & Facebook Caption Writing"
+    ],
+    "toolsUsed": [
+      "Meta Business Suite",
+      "Canva",
+      "Rank Math",
+      "Google Search Console",
+      "Google Trends"
+    ],
+    "workSummary": "Delivered SEO keyword optimization for salon styling services, authored client education blog articles, and planned weekly social media calendars with tailored captions and hashtags."
+  },
+  {
+    "id": "motion-lab-physio",
+    "name": "Motion Lab Physio",
+    "initials": "ML",
+    "industry": "Physiotherapy",
+    "location": "Auckland, New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Google Ads",
+      "Content",
+      "Website"
+    ],
+    "url": "https://motionlab.co.nz/",
+    "myRole": "Performance Marketing & SEO Manager",
+    "myWorkList": [
+      "Keyword Research for Injury Rehab & Sports Physio",
+      "Google Ads Campaign Setup & Management",
+      "Landing Page Optimisation & Conversion Flow",
+      "Blog Content Creation on Patient Rehabilitation",
+      "Website Optimisation & Core Web Vitals",
+      "Page Speed Analysis & Bottleneck Diagnostics",
+      "Performance Analysis & Monthly Reporting"
+    ],
+    "toolsUsed": [
+      "Google Ads",
+      "Google Search Console",
+      "PageSpeed Insights",
+      "Elementor",
+      "GA4"
+    ],
+    "workSummary": "Executed end-to-end performance marketing: setup intent-focused Google Ads, performed website speed and Core Web Vitals analysis, optimized landing page booking UX, wrote rehabilitation blog articles, and tracked ongoing performance."
+  },
+  {
+    "id": "pinehill-physio",
+    "name": "Pinehill Physio",
+    "initials": "PP",
+    "industry": "Physiotherapy",
+    "location": "Auckland, New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Content",
+      "Website"
+    ],
+    "url": "https://pinehillphysio.co.nz/",
+    "myRole": "SEO & Content Manager",
+    "myWorkList": [
+      "Local SEO Optimisation for North Shore Clinic",
+      "Content Calendar Scheduling & Planning",
+      "Social Media Content & Ergonomic Advice Posts",
+      "Website Content Writing & Service Pages",
+      "On-Page SEO & Metadata Refinement"
+    ],
+    "toolsUsed": [
+      "WordPress",
+      "Rank Math",
+      "Meta Business Suite",
+      "Google Search Console",
+      "Canva"
+    ],
+    "workSummary": "Structured patient education social content calendars, wrote targeted clinic website copy, implemented on-page SEO meta tags, and enhanced local Auckland search presence."
+  },
+  {
+    "id": "quantum-sports",
+    "name": "Quantum Sports",
+    "initials": "QS",
+    "industry": "Sports Retail",
+    "location": "New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Content",
+      "Website"
+    ],
+    "url": "https://quantumsports.co.nz/",
+    "myRole": "Digital Marketing & Policy Content Strategist",
+    "myWorkList": [
+      "Website Content Writing & Product Descriptions",
+      "Website Policy Research: Privacy Policy",
+      "Website Policy Research: Returns & Exchange Policy",
+      "Website Policy Research: Terms & Conditions (NZ Law)",
+      "SEO Keyword Research for Sports Equipment",
+      "SMM Content Strategy & Product Showcases"
+    ],
+    "toolsUsed": [
+      "WooCommerce",
+      "WordPress",
+      "Google Search Console",
+      "Meta Business Suite",
+      "Canva"
+    ],
+    "workSummary": "Researched and drafted comprehensive e-commerce website policies compliant with NZ consumer law (Privacy, Returns, Terms), optimized category SEO, and created social media product highlight campaigns."
+  },
+  {
+    "id": "the-body-workshop",
+    "name": "The Body Workshop",
+    "initials": "TBW",
+    "industry": "Wellness",
+    "location": "Auckland, New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Content",
+      "Website"
+    ],
+    "url": "",
+    "myRole": "SEO & Content Strategist",
+    "myWorkList": [
+      "Keyword Research across Holistic Therapy Modalities",
+      "Homepage Content Copywriting",
+      "Service Pages Content Architecture & Writing",
+      "Local SEO & Google Business Presence",
+      "Content Calendar Creation",
+      "Blog Content Writing & Health Guides",
+      "SMM Content Planning"
+    ],
+    "toolsUsed": [
+      "WordPress",
+      "Google Search Console",
+      "Rank Math",
+      "Canva",
+      "Google Analytics"
+    ],
+    "workSummary": "Rewrote the homepage and multi-service therapy pages for search intent, completed keyword research for local Auckland wellness queries, wrote educational blog articles, and managed monthly social calendars."
+  },
+  {
+    "id": "the-vet-clinic",
+    "name": "The Vet Clinic",
+    "initials": "TVC",
+    "industry": "Veterinary Healthcare",
+    "location": "Auckland, New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Google Ads",
+      "Content"
+    ],
+    "url": "https://thevetclinic.co.nz/",
+    "myRole": "Digital Marketing Manager — Search & Campaign Work",
+    "myWorkList": [
+      "Keyword Research for Emergency & Routine Veterinary Care",
+      "Google Ads Keyword Planning & Bid Structuring",
+      "Google Ads Campaign Setup & Call Extensions",
+      "Service Content Writing for Clinical Animal Care",
+      "Social Media Content Creation & Pet Health Tips",
+      "Campaign Work & Negative Keyword Sculpting",
+      "Blog Content Writing on Preventative Pet Care"
+    ],
+    "toolsUsed": [
+      "Google Ads",
+      "Google Search Console",
+      "Meta Ads Manager",
+      "WordPress",
+      "GA4"
+    ],
+    "workSummary": "Executed search advertising and organic content: structured emergency veterinary Google Ads campaigns, authored pet care advice articles, wrote clinic service pages, and published social media pet health tips."
+  },
+  {
+    "id": "thebackbenchers-tech",
+    "name": "TheBackBenchers Tech",
+    "initials": "TBB",
+    "industry": "Digital Services & Tech",
+    "location": "New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Website",
+      "Content",
+      "Technical SEO"
+    ],
+    "url": "https://thebackbencherstech.com/",
+    "myRole": "Digital Marketing Manager & Client Project Lead",
+    "myWorkList": [
+      "Multi-Client SEO & SMM Delivery",
+      "Website Content Architecture",
+      "Technical SEO Audits & Crawlability Checks",
+      "Website Optimisation & Elementor Layouts",
+      "Client Marketing Reports & KPI Decks",
+      "Client Project Management & Timeline Governance"
+    ],
+    "toolsUsed": [
+      "Google Search Console",
+      "SEMrush",
+      "Ahrefs",
+      "WordPress",
+      "Elementor",
+      "GA4"
+    ],
+    "workSummary": "Managed digital marketing operations across client accounts: conducted technical SEO audits, improved site performance, prepared monthly performance reports, authored website content, and managed client delivery workflows."
+  },
+  {
+    "id": "crepeon-textiles",
+    "name": "Crepeon Textile Website",
+    "initials": "CT",
+    "industry": "Textiles / Manufacturing",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "Content",
+      "Website"
+    ],
+    "url": "",
+    "myRole": "Digital Marketing & SEO Specialist",
+    "myWorkList": [
+      "SEO Keyword Research for Fabric & Textile Collections",
+      "Website Marketing Copy & Product Catalog Structuring",
+      "On-Page SEO Optimization & Meta Tags Setup",
+      "Content Strategy for B2B Wholesale Buyer Queries",
+      "Website Optimisation & User Navigation Architecture"
+    ],
+    "toolsUsed": [
+      "WordPress",
+      "Rank Math",
+      "Google Search Console",
+      "Google Analytics"
+    ],
+    "workSummary": "Structured product category SEO for textile buyers, developed website marketing content, optimized on-page product specifications, and improved catalog navigation without social media management."
+  },
+  {
+    "id": "mac-avenue",
+    "name": "Mac Avenue",
+    "initials": "MA",
+    "industry": "Technology / Apple Retail",
+    "location": "Bengaluru, India",
+    "country": "India",
+    "services": [
+      "Performance Marketing",
+      "SMM",
+      "Meta Ads",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Performance Marketing & SMM Manager",
+    "myWorkList": [
+      "Meta Ads Performance Campaigns for MacBook Upgrades & Trade-Ins",
+      "Social Media Marketing & Instagram Feed Strategy",
+      "High-Intent Audience Research & Retargeting Setup",
+      "Performance Ad Copywriting & Direct Offer Messaging",
+      "Content Strategy & Weekly Creative Briefs for Social"
+    ],
+    "toolsUsed": [
+      "Meta Ads Manager",
+      "Instagram Creator Studio",
+      "Canva",
+      "Meta Business Suite"
+    ],
+    "workSummary": "Delivered dedicated performance marketing and social media management: created and optimized Meta Ads campaigns for device upgrades, formulated weekly Instagram content strategies, and managed paid customer acquisition funnels."
+  },
+  {
+    "id": "labifix-innovations",
+    "name": "LabiFix Innovations",
+    "initials": "LI",
+    "industry": "Technology & Lab Equipment",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "Content",
+      "Website",
+      "Technical SEO"
+    ],
+    "url": "",
+    "myRole": "Technical SEO & Website Specialist",
+    "myWorkList": [
+      "Keyword Research for Specialized Industrial Lab Equipment",
+      "Technical SEO Auditing & Crawl Error Fixes",
+      "Website Optimisation & Spec Sheet Structuring",
+      "SEO Content Writing for Engineering Pages",
+      "Google Search Console Indexation Management"
+    ],
+    "toolsUsed": [
+      "SEMrush",
+      "Google Search Console",
+      "Screaming Frog",
+      "Rank Math"
+    ],
+    "workSummary": "Conducted high-precision technical keyword research for laboratory equipment, optimized product specifications for search engines, resolved indexing errors, and improved on-page metadata."
+  },
+  {
+    "id": "iugale-services",
+    "name": "IUGALE Services",
+    "initials": "IU",
+    "industry": "Digital Marketing & IT",
+    "location": "Bengaluru, India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "SMM",
+      "Website",
+      "Content",
+      "Technical SEO"
+    ],
+    "url": "https://iugale.com/",
+    "myRole": "Digital Marketing Manager — Operations & Delivery",
+    "myWorkList": [
+      "SEO Strategy & Keyword Architecture",
+      "SMM Multi-Channel Social Content",
+      "Website Management on WordPress",
+      "Digital Marketing Campaign Governance",
+      "Content Creation for Technology & Marketing Services",
+      "Website Optimisation & Elementor Layout Updates"
+    ],
+    "toolsUsed": [
+      "WordPress",
+      "Elementor",
+      "GA4",
+      "Google Search Console",
+      "SEMrush"
+    ],
+    "workSummary": "Delivered hands-on digital marketing: managed the enterprise WordPress website, executed ongoing SEO keyword optimization, produced social content, authored service pages, and performed technical site speed updates."
+  },
+  {
+    "id": "amde-architects",
+    "name": "AMDE Architects",
+    "initials": "AM",
+    "industry": "Architecture & Design",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SMM",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Social Media Strategist",
+    "myWorkList": [
+      "Social Media Content Planning for Architectural Projects",
+      "Curated Monthly Social Media Calendar",
+      "Design Philosophy Caption Writing & Material Spotlights",
+      "Hashtag Strategy Targeting High-End Homeowners",
+      "Visual Grid Aesthetic Structuring"
+    ],
+    "toolsUsed": [
+      "Meta Business Suite",
+      "Canva",
+      "Instagram Insights",
+      "Google Docs"
+    ],
+    "workSummary": "Structured a polished architectural social media calendar, drafted design captions highlighting materials and craftsmanship, and managed social engagement workflows."
+  },
+  {
+    "id": "onyx-pinnacle",
+    "name": "Onyx Pinnacle Enterprises",
+    "initials": "OP",
+    "industry": "Interior Design",
+    "location": "Bengaluru, India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "Content",
+      "Website"
+    ],
+    "url": "https://onyxpinnacleenterprises.in/",
+    "myRole": "SEO & Website Content Specialist",
+    "myWorkList": [
+      "Keyword Research for Luxury Interior Design & Fitouts",
+      "Website Content Writing & Portfolio Copy",
+      "On-Page SEO for Bengaluru Residential Queries",
+      "Content Strategy for Turnkey & Modular Interiors",
+      "Website Layout & Mobile Readability Review"
+    ],
+    "toolsUsed": [
+      "WordPress",
+      "Elementor",
+      "Rank Math",
+      "Google Search Console",
+      "Google Keyword Planner"
+    ],
+    "workSummary": "Executed localized keyword research for luxury interiors, wrote bespoke website portfolio content, implemented on-page SEO meta tags, and structured service pages for high lead capture."
+  },
+  {
+    "id": "brickstime-constructions",
+    "name": "Brickstime Constructions",
+    "initials": "BC",
+    "industry": "Construction",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SMM",
+      "Meta Ads",
+      "Content"
+    ],
+    "url": "https://brickstimeconstructions.com/",
+    "myRole": "Paid Social & Content Specialist",
+    "myWorkList": [
+      "Meta Ads Lead Generation Campaign Setup",
+      "Campaign Creative Content & Ad Angles",
+      "Ad Copywriting Emphasizing Handover Guarantees",
+      "Social Media Content from Active Construction Sites",
+      "Captions & Hashtag Strategy for Prospective Homebuilders"
+    ],
+    "toolsUsed": [
+      "Meta Ads Manager",
+      "Canva",
+      "Meta Business Suite",
+      "Google Drive"
+    ],
+    "workSummary": "Managed Meta Ads lead acquisition for residential construction, wrote compelling ad copy and hooks, developed construction progress social updates, and curated targeted real estate hashtags."
+  },
+  {
+    "id": "dahlia-imprints",
+    "name": "Dahlia Imprints",
+    "initials": "DI",
+    "industry": "Commercial Printing",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "SMM",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Digital Marketing Specialist",
+    "myWorkList": [
+      "Digital Marketing Content Strategy",
+      "SEO Keyword Research for Packaging & Commercial Printing",
+      "SMM Content Planning Showcasing Specialty Finishes",
+      "Website Product Descriptions & Category Content",
+      "Brand Positioning for Corporate Gifting"
+    ],
+    "toolsUsed": [
+      "Google Search Console",
+      "Canva",
+      "WordPress",
+      "Meta Business Suite"
+    ],
+    "workSummary": "Researched commercial packaging search keywords, drafted product catalog descriptions, and structured social content showcasing specialty print textures and corporate merchandise."
+  },
+  {
+    "id": "wordpar",
+    "name": "WordPar",
+    "initials": "WP",
+    "industry": "Professional Translation",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "Content",
+      "Website"
+    ],
+    "url": "",
+    "myRole": "SEO & Website Content Specialist",
+    "myWorkList": [
+      "SEO Keyword Research for Enterprise Language Services",
+      "Website Optimisation & Technical Health Checks",
+      "Service Page Content Restructuring for Legal & Medical Translation",
+      "Digital Marketing Content Planning",
+      "Search Console Query Monitoring & Meta Tag Optimization"
+    ],
+    "toolsUsed": [
+      "Google Search Console",
+      "Ahrefs",
+      "WordPress",
+      "Screaming Frog"
+    ],
+    "workSummary": "Conducted international search keyword research, optimized specialized translation service pages, audited technical site health, and crafted enterprise-focused website copy."
+  },
+  {
+    "id": "weddingsclub",
+    "name": "WeddingsClub",
+    "initials": "WC",
+    "industry": "Weddings & Events",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SEO",
+      "SMM",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Digital Marketing & Content Lead",
+    "myWorkList": [
+      "SEO Keyword Research for Wedding Vendors & Venues",
+      "SMM Content Planning & Bridal Inspiration Campaigns",
+      "Content Strategy for Wedding Checklists & Planning Guides",
+      "Vendor Category On-Page SEO Optimisation",
+      "Digital Marketing Coordination for Festive Seasons"
+    ],
+    "toolsUsed": [
+      "Meta Business Suite",
+      "Canva",
+      "Rank Math",
+      "Google Trends",
+      "Pinterest Business"
+    ],
+    "workSummary": "Built wedding inspiration social media campaigns, mapped search keywords for vendor categories, wrote planning guide articles, and implemented on-page SEO across venue directories."
+  },
+  {
+    "id": "the-leela-coorg",
+    "name": "The Leela Coorg Forest Sanctuary",
+    "initials": "LC",
+    "industry": "Luxury Hospitality",
+    "location": "Coorg, India",
+    "country": "India",
+    "services": [
+      "SMM",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Social Media Content Writer & Strategist",
+    "myWorkList": [
+      "Social Media Content Development for Luxury Eco-Retreat",
+      "Evocative Caption Writing on Nature, Seclusion & Rainforests",
+      "Hashtag Strategy Formulation for Luxury Travellers",
+      "Creative Content Briefs for Bespoke Guest Experiences",
+      "Curated Visual Grid Aesthetic Planning"
+    ],
+    "toolsUsed": [
+      "Instagram Creator Studio",
+      "Meta Business Suite",
+      "Canva",
+      "Google Docs"
+    ],
+    "workSummary": "Authored sensory, evocative social captions reflecting rainforest sanctuary tranquility, formulated luxury travel hashtag sets, and coordinated creative themes for seasonal retreats."
+  },
+  {
+    "id": "tvc-clinical",
+    "name": "TVC / The Vet Clinic (Clinical Services)",
+    "initials": "TVC",
+    "industry": "Specialist Veterinary Care",
+    "location": "Auckland, New Zealand",
+    "country": "New Zealand",
+    "services": [
+      "SEO",
+      "SMM",
+      "Google Ads",
+      "Content"
+    ],
+    "url": "https://thevetclinic.co.nz/",
+    "myRole": "Digital Marketing Specialist — Clinical Search & Content",
+    "myWorkList": [
+      "Keyword Research for Animal Surgical & Diagnostic Procedures",
+      "Service Content Writing for Clinical Landing Pages",
+      "Google Ads Keyword Planning & Setup for Urgent Procedures",
+      "Social Media Content on Pre/Post-Operative Pet Care",
+      "Campaign Work & Negative Keyword Maintenance",
+      "Blog Content Writing on Complex Animal Health"
+    ],
+    "toolsUsed": [
+      "Google Ads",
+      "Google Search Console",
+      "WordPress",
+      "Rank Math",
+      "GA4"
+    ],
+    "workSummary": "Maintained dedicated clinical marketing: researched surgical veterinary search queries, structured urgent care Google Search campaigns, authored clinical landing page copy, and wrote patient recovery guides."
+  },
+  {
+    "id": "ala-sports-arena",
+    "name": "ALA Sports Arena",
+    "initials": "ALA",
+    "industry": "Sports & Recreation",
+    "location": "Bengaluru, India",
+    "country": "India",
+    "services": [
+      "SMM",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Social Media Strategist & Campaign Creator",
+    "myWorkList": [
+      "SMM Promotional Strategy for Turf Bookings & Tournaments",
+      "Social Media Content Planning for Weekend Sports Leagues",
+      "Campaign Creative Content & Promotional Banners",
+      "Content Planning Across Instagram & Local Sports Groups",
+      "Community Engagement & Player Spotlight Content"
+    ],
+    "toolsUsed": [
+      "Meta Business Suite",
+      "Canva",
+      "Instagram Insights",
+      "Google Drive"
+    ],
+    "workSummary": "Designed promotional social media campaigns for sports turf bookings, published weekend tournament highlights, and planned local community engagement challenges."
+  },
+  {
+    "id": "orbitas",
+    "name": "Orbitas",
+    "initials": "OR",
+    "industry": "Corporate & Consulting",
+    "location": "India",
+    "country": "India",
+    "services": [
+      "SMM",
+      "Content"
+    ],
+    "url": "",
+    "myRole": "Social Media Strategist & Content Planner",
+    "myWorkList": [
+      "SMM Content Strategy & Corporate Brand Voice",
+      "Social Media Content Planning & Scheduling",
+      "Content Planning Across LinkedIn & Facebook",
+      "Social Media Calendar Formulation",
+      "Professional Caption Writing & Visual Briefs"
+    ],
+    "toolsUsed": [
+      "Meta Business Suite",
+      "Canva",
+      "LinkedIn Page Manager",
+      "Google Docs"
+    ],
+    "workSummary": "Developed B2B social media content strategies, established monthly content schedules, wrote professional captions, and designed visual post briefs for consulting brand engagement."
+  }
+];
+
+// ==========================================================================
+// 2. DOM ELEMENTS & STATE
+// ==========================================================================
+const DOM = {
+  headerNav: document.getElementById('headerNav'),
+  mobileToggle: document.getElementById('mobileToggle'),
+  mobileDrawer: document.getElementById('mobileDrawer'),
+  navLinks: document.querySelectorAll('.nav-link, .drawer-link'),
+  
+  heroSection: document.getElementById('home'),
+  heroTextCol: document.getElementById('heroTextCol'),
+  growthHubStage: document.getElementById('growthHubStage'),
+  heroVisualCol: document.getElementById('heroVisualCol'),
+  centralHub: document.getElementById('centralHub'),
+  nodeCards: document.querySelectorAll('.channel-station-card, .hub-node-card'),
+  laserLines: document.querySelectorAll('.conn-laser'),
+  hudWidgets: document.querySelectorAll('.hud-widget, .hud-chip'),
+  particlesCanvas: document.getElementById('heroParticles'),
+  cursorGlow: document.getElementById('cursorGlow'),
+
+  skillTabs: document.querySelectorAll('.skill-tab'),
+  skillCards: document.querySelectorAll('.skill-card'),
+
+  toolChips: document.querySelectorAll('.tool-chip'),
+  toolTooltip: document.getElementById('toolTooltip'),
+
+  projectCardsGrid: document.getElementById('projectCardsGrid'),
+  projectSearchInput: document.getElementById('projectSearchInput'),
+  clearSearchBtn: document.getElementById('clearSearchBtn'),
+  dynamicCountPill: document.getElementById('dynamicCountPill'),
+  countAllPill: document.getElementById('countAll'),
+  locationFilterGroup: document.getElementById('locationFilterGroup'),
+  serviceFilterGroup: document.getElementById('serviceFilterGroup'),
+
+  caseStudyModal: document.getElementById('caseStudyModal'),
+  modalCloseBtn: document.getElementById('modalCloseBtn'),
+  modalAvatar: document.getElementById('modalAvatar'),
+  modalTitle: document.getElementById('modalTitle'),
+  modalSubmeta: document.getElementById('modalSubmeta'),
+  modalServices: document.getElementById('modalServices'),
+  modalRole: document.getElementById('modalRole'),
+  modalWorkList: document.getElementById('modalWorkList'),
+  modalTools: document.getElementById('modalTools'),
+  modalSummary: document.getElementById('modalSummary'),
+  modalGscSection: document.getElementById('modalGscSection'),
+  modalWebsiteRow: document.getElementById('modalWebsiteRow'),
+
+  currentYear: document.getElementById('currentYear'),
+  contactForm: document.getElementById('contactForm'),
+  formSuccessMessage: document.getElementById('formSuccessMessage')
+};
+
+const state = {
+  searchTerm: '',
+  selectedService: 'all',
+  selectedLocation: 'all',
+  isReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+};
+
+// ==========================================================================
+// 3. INITIALIZATION
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  if (DOM.currentYear) {
+    DOM.currentYear.textContent = new Date().getFullYear();
+  }
+
+  initProjectsSection();
+  initHeroGrowthHub();
+
+  if (!state.isReducedMotion) {
+    initHeroParticles();
+    initCursorGlow();
+  }
+
+  initScrollInteractions();
+  initSkillMatrix();
+  initToolkitMarquee();
+  initMobileNavigation();
+  initModalInteractions();
+});
+
+// ==========================================================================
+// 4. HERO SECTION 3D & PARALLAX
+// ==========================================================================
+function initHeroGrowthHub() {
+  if (state.isReducedMotion) return;
+
+  const heroSec = DOM.heroSection;
+  const stage = DOM.growthHubStage;
+  const coreReadout = document.getElementById('coreReadout');
+  const defaultReadoutText = 'Hover any node to inspect channel';
+
+  const capabilityMap = {
+    'seo': 'SEO: Keyword Mapping, Schema & SERP Top 3',
+    'google-ads': 'Paid Ads: Search Intent PPC & Policy Compliance',
+    'meta-ads': 'Paid Social: Lead Generation & Retargeting',
+    'smm': 'SMM: 30-Day Content Calendars & Native Captions',
+    'analytics': 'Web & Data: GA4 Triggers, Speed 90+ & Reports',
+    'conversion': 'WordPress Page Speed & Mobile UX Optimisation',
+    'content': 'Search Intent Blog Strategy & Creative Briefs',
+    'strategy': 'Cross-Channel Operations & Account Alignment'
+  };
+
+  if (!stage) return;
+
+  let currentX = 0, currentY = 0;
+  let targetX = 0, targetY = 0;
+  let rafId = null;
+
+  function updateStage() {
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+
+    stage.style.transform = `rotateY(${currentX * 12}deg) rotateX(${-currentY * 12}deg)`;
+
+    if (DOM.centralHub) {
+      DOM.centralHub.style.transform = `translateZ(35px) translate(${currentX * 6}px, ${currentY * 6}px)`;
+    }
+
+    if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
+      rafId = requestAnimationFrame(updateStage);
+    } else {
+      rafId = null;
+    }
+  }
+
+  const trackTarget = heroSec || stage;
+  trackTarget.addEventListener('mousemove', (e) => {
+    const rect = trackTarget.getBoundingClientRect();
+    targetX = (e.clientX - rect.left) / rect.width - 0.5;
+    targetY = (e.clientY - rect.top) / rect.height - 0.5;
+    if (!rafId) rafId = requestAnimationFrame(updateStage);
+  });
+
+  trackTarget.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+    if (!rafId) rafId = requestAnimationFrame(updateStage);
+  });
+
+  DOM.nodeCards.forEach(card => {
+    const nodeId = card.dataset.nodeId;
+    const matchingLaser = Array.from(DOM.laserLines).find(line => line.dataset.node === nodeId);
+
+    card.addEventListener('mouseenter', () => {
+      if (matchingLaser) matchingLaser.classList.add('active');
+      if (coreReadout && capabilityMap[nodeId]) {
+        coreReadout.textContent = `▶ ${capabilityMap[nodeId]}`;
+        coreReadout.style.color = '#11d3b0';
+      }
+      if (DOM.centralHub) {
+        DOM.centralHub.style.borderColor = '#11d3b0';
+        DOM.centralHub.style.boxShadow = '0 25px 70px rgba(0, 0, 0, 0.85), 0 0 55px rgba(17, 211, 176, 0.5)';
+      }
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (matchingLaser) matchingLaser.classList.remove('active');
+      if (coreReadout) {
+        coreReadout.textContent = defaultReadoutText;
+        coreReadout.style.color = '';
+      }
+      if (DOM.centralHub) {
+        DOM.centralHub.style.borderColor = '';
+        DOM.centralHub.style.boxShadow = '';
+      }
+    });
+
+    card.addEventListener('click', () => {
+      const serviceNameMap = {
+        'seo': 'SEO',
+        'google-ads': 'Google Ads',
+        'meta-ads': 'Meta Ads',
+        'analytics': 'Analytics',
+        'conversion': 'Website',
+        'content': 'Content',
+        'smm': 'SMM',
+        'strategy': 'all'
+      };
+      const mappedService = serviceNameMap[nodeId] || 'all';
+      filterByService(mappedService);
+      
+      const projectsSection = document.getElementById('projects');
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+function initHeroParticles() {
+  const canvas = DOM.particlesCanvas;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const particleCount = 28;
+  const particles = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.5 + 0.8,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      alpha: Math.random() * 0.4 + 0.15
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(17, 211, 176, ${p.alpha})`;
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+        if (dist < 85) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(17, 211, 176, ${0.1 * (1 - dist / 85)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(render);
+  }
+
+  render();
+}
+
+function initCursorGlow() {
+  const glow = DOM.cursorGlow;
+  if (!glow || window.innerWidth < 768) return;
+
+  window.addEventListener('mousemove', (e) => {
+    glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+  });
+}
+
+// ==========================================================================
+// 5. SCROLL INTERACTIONS
+// ==========================================================================
+function initScrollInteractions() {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      DOM.headerNav.classList.add('scrolled');
+    } else {
+      DOM.headerNav.classList.remove('scrolled');
+    }
+
+    if (!state.isReducedMotion && window.scrollY < window.innerHeight) {
+      const scrollRatio = window.scrollY / window.innerHeight;
+      if (DOM.heroTextCol) {
+        DOM.heroTextCol.style.transform = `translateY(${scrollRatio * 35}px)`;
+        DOM.heroTextCol.style.opacity = `${1 - scrollRatio * 0.85}`;
+      }
+      if (DOM.growthHubStage) {
+        DOM.growthHubStage.style.transform = `scale(${1 - scrollRatio * 0.12}) translateY(${scrollRatio * 20}px)`;
+        DOM.growthHubStage.style.opacity = `${1 - scrollRatio * 0.7}`;
+      }
+    }
+  });
+
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealElements.forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+      if (scrollPos >= top && scrollPos < top + height) {
+        DOM.navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  });
+}
+
+// ==========================================================================
+// 6. PROJECTS SECTION & FILTERING (FOCUSED 100% ON SRI VIDYA'S WORK)
+// ==========================================================================
+function initProjectsSection() {
+  if (DOM.countAllPill) {
+    DOM.countAllPill.textContent = clientProjects.length;
+  }
+  
+  renderProjects();
+
+  if (DOM.projectSearchInput) {
+    DOM.projectSearchInput.addEventListener('input', (e) => {
+      state.searchTerm = e.target.value.trim().toLowerCase();
+      if (DOM.clearSearchBtn) {
+        DOM.clearSearchBtn.style.display = state.searchTerm ? 'block' : 'none';
+      }
+      renderProjects();
+    });
+  }
+
+  if (DOM.clearSearchBtn) {
+    DOM.clearSearchBtn.addEventListener('click', () => {
+      DOM.projectSearchInput.value = '';
+      state.searchTerm = '';
+      DOM.clearSearchBtn.style.display = 'none';
+      renderProjects();
+      DOM.projectSearchInput.focus();
+    });
+  }
+
+  if (DOM.locationFilterGroup) {
+    DOM.locationFilterGroup.addEventListener('click', (e) => {
+      const btn = e.target.closest('.loc-btn');
+      if (!btn) return;
+      DOM.locationFilterGroup.querySelectorAll('.loc-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.selectedLocation = btn.dataset.loc;
+      renderProjects();
+    });
+  }
+
+  if (DOM.serviceFilterGroup) {
+    DOM.serviceFilterGroup.addEventListener('click', (e) => {
+      const btn = e.target.closest('.svc-filter-btn');
+      if (!btn) return;
+      DOM.serviceFilterGroup.querySelectorAll('.svc-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.selectedService = btn.dataset.filter;
+      renderProjects();
+    });
+  }
+}
+
+function filterByService(serviceName) {
+  state.selectedService = serviceName;
+  if (DOM.serviceFilterGroup) {
+    DOM.serviceFilterGroup.querySelectorAll('.svc-filter-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filter === serviceName);
+    });
+  }
+  renderProjects();
+}
+
+function renderProjects() {
+  const filtered = clientProjects.filter(project => {
+    const matchesService = state.selectedService === 'all' || 
+      project.services.some(s => s.toLowerCase() === state.selectedService.toLowerCase());
+
+    const matchesLocation = state.selectedLocation === 'all' || 
+      project.country.toLowerCase() === state.selectedLocation.toLowerCase() ||
+      project.location.toLowerCase().includes(state.selectedLocation.toLowerCase());
+
+    const haystack = [
+      project.name,
+      project.industry,
+      project.location,
+      project.country,
+      ...project.services,
+      ...project.myWorkList,
+      project.myRole,
+      project.workSummary
+    ].join(' ').toLowerCase();
+
+    const matchesSearch = !state.searchTerm || haystack.includes(state.searchTerm);
+
+    return matchesService && matchesLocation && matchesSearch;
+  });
+
+  if (DOM.dynamicCountPill) {
+    DOM.dynamicCountPill.textContent = `${filtered.length} of ${clientProjects.length} Projects`;
+  }
+
+  if (!filtered.length) {
+    DOM.projectCardsGrid.innerHTML = `
+      <div class="empty-projects-state">
+        <span style="font-size: 28px; display: block; margin-bottom: 12px;">🔍</span>
+        <h3>No projects match your current filters</h3>
+        <p>Try clearing your search terms or selecting "All Locations" and "All Disciplines".</p>
+      </div>
+    `;
+    return;
+  }
+
+  DOM.projectCardsGrid.innerHTML = filtered.map((project, idx) => {
+    const serviceBadges = project.services.map(svc => {
+      const classMap = {
+        'SEO': 'badge-seo',
+        'SMM': 'badge-smm',
+        'Google Ads': 'badge-google-ads',
+        'Meta Ads': 'badge-meta-ads',
+        'Content': 'badge-content',
+        'Analytics': 'badge-analytics',
+        'Website': 'badge-website',
+        'Technical SEO': 'badge-tech-seo'
+      };
+      const badgeClass = classMap[svc] || 'badge-seo';
+      return `<span class="card-badge ${badgeClass}">${escapeHtml(svc)}</span>`;
+    }).join('');
+
+    // Focused 100% on what she worked on
+    const workItems = project.myWorkList.slice(0, 4).map(act => {
+      return `<li>${escapeHtml(act)}</li>`;
+    }).join('');
+
+    const websiteLink = project.url 
+      ? `<a href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer" class="live-site-link">Visit Website ↗</a>`
+      : `<span class="live-site-link">Client Account</span>`;
+
+    const gscCardBadge = project.gscReport 
+      ? `<div class="card-gsc-badge">✓ Verified GSC: ${escapeHtml(project.gscReport.badgeSummary)}</div>`
+      : '';
+
+    return `
+      <article class="rich-project-card" style="animation-delay: ${Math.min(idx * 35, 300)}ms">
+        <div class="card-top-row">
+          <div class="client-avatar-badge">${escapeHtml(project.initials)}</div>
+          <div class="client-meta-info">
+            <h3>${escapeHtml(project.name)}</h3>
+            <div class="client-subtext">${escapeHtml(project.industry)} · ${escapeHtml(project.location)}</div>
+          </div>
+        </div>
+
+        ${gscCardBadge}
+
+        <div class="card-service-badges">
+          ${serviceBadges}
+        </div>
+
+        <div class="card-work-summary">
+          <span class="work-summary-label">What I Worked On</span>
+          <ul class="work-activities-list">
+            ${workItems}
+          </ul>
+        </div>
+
+        <div class="card-bottom-actions">
+          <button class="btn-open-case" onclick="openCaseStudyModal('${project.id}')">
+            <span>View My Work Details</span>
+            <span>→</span>
+          </button>
+          ${websiteLink}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+// ==========================================================================
+// 7. MODAL: FOCUSED 100% ON HER WORK & DELIVERABLES
+// ==========================================================================
+function initModalInteractions() {
+  if (!DOM.caseStudyModal) return;
+
+  if (DOM.modalCloseBtn) {
+    DOM.modalCloseBtn.addEventListener('click', closeCaseStudyModal);
+  }
+
+  DOM.caseStudyModal.addEventListener('click', (e) => {
+    if (e.target === DOM.caseStudyModal) {
+      closeCaseStudyModal();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && DOM.caseStudyModal.style.display === 'flex') {
+      closeCaseStudyModal();
+    }
+  });
+}
+
+window.openCaseStudyModal = function(projectId) {
+  const project = clientProjects.find(p => p.id === projectId);
+  if (!project || !DOM.caseStudyModal) return;
+
+  DOM.modalAvatar.textContent = project.initials;
+  DOM.modalTitle.textContent = project.name;
+  DOM.modalSubmeta.textContent = `${project.industry} · ${project.location}`;
+
+  DOM.modalServices.innerHTML = project.services.map(svc => `
+    <span class="card-badge badge-seo">${escapeHtml(svc)}</span>
+  `).join('');
+
+  DOM.modalRole.textContent = project.myRole;
+  
+  // Inject Google Search Console report screenshot and metrics if available
+  if (DOM.modalGscSection) {
+    if (project.gscReport) {
+      DOM.modalGscSection.innerHTML = `
+        <div class="modal-gsc-container">
+          <h4><span class="pulse-dot"></span> Official Google Search Console Performance Report (3 Months)</h4>
+          ${project.gscReport.timelineNote ? `<div class="gsc-timeline-note"><span>⏱️ ${escapeHtml(project.gscReport.timelineNote)}</span></div>` : ''}
+          <div class="modal-gsc-img-wrap">
+            <img src="${escapeHtml(project.gscReport.image)}" alt="Google Search Console report for ${escapeHtml(project.name)}">
+          </div>
+          <div class="gsc-metrics-banner">
+            <div class="gsc-metric-chip">
+              <small>Total Clicks</small>
+              <strong class="highlight-blue">${escapeHtml(project.gscReport.clicks)}</strong>
+            </div>
+            <div class="gsc-metric-chip">
+              <small>Impressions</small>
+              <strong class="highlight-teal">${escapeHtml(project.gscReport.impressions)}</strong>
+            </div>
+            <div class="gsc-metric-chip">
+              <small>Avg. CTR</small>
+              <strong>${escapeHtml(project.gscReport.ctr)}</strong>
+            </div>
+            <div class="gsc-metric-chip">
+              <small>Avg. Position</small>
+              <strong class="highlight-teal">${escapeHtml(project.gscReport.position)}</strong>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      DOM.modalGscSection.innerHTML = '';
+    }
+  }
+
+  // All exact deliverables completed by Sri Vidya
+  DOM.modalWorkList.innerHTML = project.myWorkList.map(step => `
+    <li>${escapeHtml(step)}</li>
+  `).join('');
+
+  DOM.modalTools.innerHTML = project.toolsUsed.map(tool => `
+    <span>${escapeHtml(tool)}</span>
+  `).join('');
+
+  DOM.modalSummary.textContent = project.workSummary;
+
+  if (project.url) {
+    DOM.modalWebsiteRow.innerHTML = `
+      <a href="${escapeHtml(project.url)}" target="_blank" rel="noopener noreferrer" class="btn-primary-glow" style="padding: 10px 18px; font-size: 12.5px;">
+        <span>Visit Live Website ↗</span>
+      </a>
+    `;
+  } else {
+    DOM.modalWebsiteRow.innerHTML = '';
+  }
+
+  DOM.caseStudyModal.style.display = 'flex';
+  DOM.caseStudyModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+};
+
+function closeCaseStudyModal() {
+  if (!DOM.caseStudyModal) return;
+  DOM.caseStudyModal.style.display = 'none';
+  DOM.caseStudyModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+// ==========================================================================
+// 8. CAPABILITY TABS & TOOLKIT
+// ==========================================================================
+function initSkillMatrix() {
+  DOM.skillTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      DOM.skillTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.dataset.skillCat;
+
+      DOM.skillCards.forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
+function initToolkitMarquee() {
+  DOM.toolChips.forEach(chip => {
+    chip.addEventListener('mouseenter', () => {
+      const tip = chip.dataset.tip;
+      if (tip && DOM.toolTooltip) {
+        DOM.toolTooltip.textContent = tip;
+      }
+    });
+
+    chip.addEventListener('mouseleave', () => {
+      if (DOM.toolTooltip) {
+        DOM.toolTooltip.textContent = 'Hover over any tool to view how I use it in my daily work';
+      }
+    });
+  });
+}
+
+// ==========================================================================
+// 9. MOBILE NAVIGATION & FORM
+// ==========================================================================
+function initMobileNavigation() {
+  if (!DOM.mobileToggle || !DOM.mobileDrawer) return;
+
+  DOM.mobileToggle.addEventListener('click', () => {
+    const isOpen = DOM.mobileDrawer.classList.toggle('open');
+    DOM.mobileToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  DOM.navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      DOM.mobileDrawer.classList.remove('open');
+      DOM.mobileToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+window.handleFormSubmit = function() {
+  const submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Sending Message...</span>';
+  }
+
+  setTimeout(() => {
+    if (DOM.contactForm) {
+      DOM.contactForm.reset();
+    }
+    if (DOM.formSuccessMessage) {
+      DOM.formSuccessMessage.style.display = 'flex';
+    }
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span>Message Sent Successfully ✓</span>';
+    }
+  }, 750);
+};
+
+// ==========================================================================
+// 10. UTILITIES
+// ==========================================================================
+function escapeHtml(string) {
+  const entityMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  };
+  return String(string).replace(/[&<>"']/g, s => entityMap[s]);
+}
+
+  </script>
 </body>
 </html>
