@@ -168,7 +168,7 @@ const clientProjects = [
       "Website",
       "Technical SEO"
     ],
-    "url": "",
+    "url": "https://apexmaintenance.co.nz/",
     "myRole": "SEO & Content Specialist",
     "myWorkList": [
       "Keyword Research for Commercial & Residential Services",
@@ -210,7 +210,7 @@ const clientProjects = [
       "Meta Ads",
       "Content"
     ],
-    "url": "",
+    "url": "https://doctorscoventry.co.uk/",
     "myRole": "Digital Marketing Manager — Search, Paid Ads & Compliance",
     "myWorkList": [
       "Keyword Research for Clinical & Private Treatments",
